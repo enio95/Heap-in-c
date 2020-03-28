@@ -50,6 +50,7 @@ void moreMemory(heap *);
 void destroyHeap(heap *);
 
 /*------------------------------Sort------------------------------*/
+void sort(heap *, int);
 void sortDown(heap *, int);
 void sortUp(heap *, int);
 void swap(heap *, int, int);

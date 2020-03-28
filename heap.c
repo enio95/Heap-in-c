@@ -66,8 +66,16 @@ void changeValue(heap *h, int vert, int key)
     return;
   
   h->arr[ h->mem[vert] ].key = key;
+
+  sort(h, vert);
 }
 /*------------------------------Sort------------------------------*/
+void sort(heap *h, int vert)
+{
+  sortDown(h, vert);
+  sortUp(h, vert);
+}
+
 #define left(i) ( i*2 + 1 )
 #define right(i) ( i*2 + 2 )
 void sortDown(heap *h, int vert)
