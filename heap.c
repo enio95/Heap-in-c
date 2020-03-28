@@ -61,6 +61,9 @@ int extractFromHeap(heap *h)
 /*-----------------------------change----------------------------*/
 void changeValue(heap *h, int vert, int key)
 {
+  if ( h->mem[vert] >= h->size )
+    return;
+  
   h->arr[ h->mem[vert] ].key = key;
 }
 /*------------------------------Sort------------------------------*/
