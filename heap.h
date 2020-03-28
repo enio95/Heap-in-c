@@ -1,5 +1,8 @@
 #ifndef HEAP
 #define HEAP
+#include <stdio.h>
+#include <stdlib.h>
+
 
 /*----------------------------------------------------------------
   --------------------------Made by Énio--------------------------
@@ -43,6 +46,8 @@ int extractFromHeap(heap *);
 
 /*------------------------Memory management------------------------*/
 void moreMemory(heap *);
+
+void destroyHeap(heap *);
 
 /*------------------------------Sort------------------------------*/
 void sortDown(heap *, int);

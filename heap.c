@@ -111,6 +111,8 @@ void swap(heap *h, int a, int b)
   h->arr[b] = temp;
 }
 
+int heapIsEmpty(heap *h) { return h->size==0 ? 1: 0; }
+
 /*------------------------Memory management------------------------*/
 void moreMemory(heap *h)
 {
@@ -143,7 +145,10 @@ void moreMemory(heap *h)
     }
 }
 
-int heapIsEmpty(heap *h) { return h->size==0 ? 1: 0; }
+void destroyHeap(heap *h)
+{
+  free(h->mem); free(h->arr); free(h);
+}
 
 /*---------------------------print heap---------------------------*/
 void printSize(heap *h)
