@@ -49,12 +49,13 @@ void insertInHeap(heap *h, int vert, int key)
 int extractFromHeap(heap *h)
 {
   int temp = h->arr[0].vert;
-
+  
   swap(h, 0, h->size-1);
+  
   h->size--;
-
-  sortDown(h, 0);
-
+  
+  sortDown(h, h->arr[0].vert);  
+  
   return temp;
 }
 
@@ -69,8 +70,13 @@ void changeValue(heap *h, int vert, int key)
 /*------------------------------Sort------------------------------*/
 #define left(i) ( i*2 + 1 )
 #define right(i) ( i*2 + 2 )
-void sortDown(heap *h, int ind)
+void sortDown(heap *h, int vert)
 {
+  if ( vert >= h->memSize || vert < 0)
+    return;
+
+  int ind = h->mem[vert];
+  
   if ( ind >= h->size )
     return;
 
@@ -85,22 +91,27 @@ void sortDown(heap *h, int ind)
   if ( cur != ind )
     {
       swap(h, cur, ind);
-      sortDown(h, cur);
+      sortDown(h, h->arr[cur].vert);
     }
 }
 
 #define father(i) ( (i-1) / 2 )
-void sortUp(heap *h, int ind)
+void sortUp(heap *h, int vert)
 {
-  if ( ind==0 )
+  if ( vert >= h->memSize || vert < 0)
     return;
+
+  int ind = h->mem[vert];
   
+  if ( ind==0 || ind >= h->size )
+    return;
+
   if ( compareKey(&h->arr[ind], &h->arr[ father(ind) ]) > 0 )
     return;
 
   swap(h, ind, father(ind));
 
-  sortUp(h, father(ind));
+  sortUp(h, h->arr[father(ind)].vert);
 }
 
 void swap(heap *h, int a, int b)
