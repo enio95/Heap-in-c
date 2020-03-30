@@ -6,10 +6,10 @@
 
 /*----------------------------Compare----------------------------*/
 /* HeapMin*/
-//int compareKey(hnode *a, hnode *b) { return a->key - b->key; }
+int compareKey(hnode *a, hnode *b) { return a->key - b->key; }
 
 /* heapMax*/
-int compareKey(hnode *a, hnode *b) { return b->key - a->key; }
+//int compareKey(hnode *a, hnode *b) { return b->key - a->key; }
 
 /*----------------------------newHeap----------------------------*/
 heap *newHeap()
@@ -213,16 +213,4 @@ int power(int b, int exp)
   
   else
     return b*power(b*b, exp/2);
-}
-
-void errorMessageMem(char *str)
-{
-  fprintf(stderr, "Memory allocation failed on %s", str);
-  exit(EXIT_FAILURE);  
-}
-
-void errorMessageIndex(char *str)
-{
-  fprintf(stderr, "you are suposed to insert the INDEX of your object. Failed on %s\n", str);
-  exit(EXIT_FAILURE);    
 }
